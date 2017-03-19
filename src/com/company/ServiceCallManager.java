@@ -24,7 +24,8 @@ public class ServiceCallManager {
     String[] addCallOptions = {
             "1. Add service call for furnace",
             "2. Add service call for AC unit",
-            "3. Return to main menu" };
+            "3. Water heat call  " ,
+            "4. Return to main menu" };
 
 
     /* Constructor sets up the two lists, the UserInput object, and starts the main menu */
@@ -98,6 +99,9 @@ public class ServiceCallManager {
                 addACServiceCall();
             }
             else if (choice == 3) {
+                addWaterHeatServiceCall();
+            }
+            else  if(choice == 4){
                 return;
             }
             else {
@@ -127,10 +131,27 @@ public class ServiceCallManager {
         String problem = Input.getStringInput("Enter description of problem");
         String model = Input.getStringInput("Enter model of AC unit");
 
+
+
         CentralAC ac = new CentralAC(address, problem, new Date(), model);
         todayServiceCalls.add(ac);
         System.out.println("Added the following AC unit to list of calls:\n" + ac);
+
+
     }
+    private  void addWaterHeatServiceCall(){
+        String address = Input.getStringInput("Enter address of water heat : ");
+        String problem = Input.getStringInput("Enter description of problem");
+        String serviceRequested = Input.getStringInput("Enter service requested : ");
+        int age = Input.getPositiveIntInput("Enter water heat age : ");
+        WaterHeater waterHeater = new WaterHeater(address, problem, serviceRequested, age, new Date());
+        todayServiceCalls.add(waterHeater);
+
+        System.out.println("Added the following furnace to list of calls:\n" + waterHeater);
+
+    }
+
+
 
 
     /* Resolve the call at the top of the queue
