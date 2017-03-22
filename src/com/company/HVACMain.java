@@ -1,7 +1,7 @@
 package com.company;
 
 
-public class HVAC {
+public class HVACMain {
 
     /** Program to manage service calls to furnaces and AC units */
 
